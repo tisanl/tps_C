@@ -16,7 +16,7 @@
 #include "FuncionesInformes.h"
 
 
-#define SIZE 10 //Tamaño del vector de Jugadores
+#define SIZE 3000 //Tamaño del vector de Jugadores
 #define TAM 10 //Tamaño del vector de Confederaciones
 
 
