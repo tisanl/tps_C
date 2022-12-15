@@ -97,7 +97,7 @@ int subMenuOrdenar();
  *
  * @param jugador1
  * @param jugador2
- * @return Retorna 1 si el nacionalidad del jugador 1 es mas grande que el 2, -1 si es menor o 0 si son iguales
+ * @return Retorna 1 si el nacionalidad del jugador 1 es mas grande que el 2, 0 si es menor o -1 si no pudo ejecutarse o son iguales
  */
 int ordenarJugadoresNacionalidad(void* jugador1, void* jugador2);
 
@@ -107,7 +107,7 @@ int ordenarJugadoresNacionalidad(void* jugador1, void* jugador2);
  *
  * @param jugador1
  * @param jugador2
- * @return Retorna 1 si la edad del jugador 1 es menor que el 2, -1 si es mayor o 0 si son iguales
+ * @return Retorna 1 si la edad del jugador 1 es menor que el 2, 0 si es mayor o -1 si no pudo ejecutarse o son iguales
  */
 int ordenarJugadoresEdad(void* jugador1, void* jugador2);
 
@@ -117,7 +117,7 @@ int ordenarJugadoresEdad(void* jugador1, void* jugador2);
  *
  * @param jugador1
  * @param jugador2
- * @return Retorna 1 si el nombre del jugador 1 es mas grande que el 2, -1 si es menor o 0 si son iguales
+ * @return Retorna 1 si el nombre del jugador 1 es mas grande que el 2, 0 si es menor o -1 si no pudo ejecutarse o son iguales
  */
 int ordenarJugadoresNombre(void* jugador1, void* jugador2);
 
@@ -127,7 +127,7 @@ int ordenarJugadoresNombre(void* jugador1, void* jugador2);
  *
  * @param seleccion1
  * @param seleccion2
- * @return  Retorna 1 si la confederacion de la seleccion 1 es mas grande que la 2, -1 si es menor o 0 si son iguales
+ * @return  Retorna 1 si la confederacion de la seleccion 1 es mas grande que la 2, 0 si son iguales o -1  si no pudo ejecutarse o son iguales
  */
 int ordenarSeleccionesConfederacion(void* seleccion1, void* seleccion2);
 #endif /* INFORMES_H_ */

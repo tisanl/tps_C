@@ -329,7 +329,7 @@ int ordenarJugadoresNacionalidad(void* jugador1, void* jugador2)
 		}
 		else
 		{
-			if(strcmp(nacionalidadJug1, nacionalidadJug2) == 0)
+			if(strcmp(nacionalidadJug1, nacionalidadJug2) < 0)
 			{
 				retorno = 0;
 			}
@@ -360,7 +360,7 @@ int ordenarJugadoresEdad(void* jugador1, void* jugador2)
 		}
 		else
 		{
-			if(edadJug1 == edadJug2)
+			if(edadJug1 < edadJug2)
 			{
 				retorno = 0;
 			}
@@ -392,7 +392,7 @@ int ordenarJugadoresNombre(void* jugador1, void* jugador2)
 		}
 		else
 		{
-			if(strcmp(nombreJug1, nombreJug2) == 0)
+			if(strcmp(nombreJug1, nombreJug2) < 0)
 			{
 				retorno = 0;
 			}
@@ -408,7 +408,7 @@ int ordenarSeleccionesConfederacion(void* seleccion1, void* seleccion2)
     Seleccion* auxSeleccion1 = NULL;
     Seleccion* auxSeleccion2 = NULL;
     char confederacionSelec1[30];
-    char onfederacionSelec2[30];
+    char confederacionSelec2[30];
 
 	if(seleccion1 != NULL && seleccion2 != NULL)
 	{
@@ -416,15 +416,15 @@ int ordenarSeleccionesConfederacion(void* seleccion1, void* seleccion2)
 		auxSeleccion2 = (Seleccion*) seleccion2;
 
 		selec_getConfederacion(auxSeleccion1, confederacionSelec1);
-		selec_getConfederacion(auxSeleccion2, onfederacionSelec2);
+		selec_getConfederacion(auxSeleccion2, confederacionSelec2);
 
-		if(strcmp(confederacionSelec1, onfederacionSelec2) > 0)
+		if(strcmp(confederacionSelec1, confederacionSelec2) > 0)
 		{
 			retorno = 1;
 		}
 		else
 		{
-			if(strcmp(confederacionSelec1, onfederacionSelec2) == 0)
+			if(strcmp(confederacionSelec1, confederacionSelec2) < 0)
 			{
 				retorno = 0;
 			}

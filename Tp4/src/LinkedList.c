@@ -251,13 +251,13 @@ int ll_clear(LinkedList* this)
     if(this != NULL)
     {
     	len = ll_len(this);
-    	for(int i = 0; i < len; i++)
+    	for(int i = 0; i < len && this->pFirstNode != NULL; i++)
     	{
-    		ll_remove(this, i);
+    		ll_remove(this, 0);
     	}
-
     	returnAux = 0;
     }
+
     return returnAux;
 }
 
@@ -274,9 +274,11 @@ int ll_deleteLinkedList(LinkedList* this)
 
     if(this != NULL)
     {
-    	ll_clear(this);
-    	free(this);
-    	returnAux = 0;
+    	if(ll_clear(this) == 0)
+    	{
+			free(this);
+			returnAux = 0;
+    	}
     }
 
     return returnAux;
@@ -347,7 +349,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
 
-    if(this != NULL && index >= 0 && index < ll_len(this))
+    if(this != NULL && index >= 0 && index <= ll_len(this))
     {
     	returnAux = addNode(this, index, pElement);
     }
@@ -370,10 +372,7 @@ void* ll_pop(LinkedList* this,int index)
     if (this != NULL && index >= 0 && index < ll_len(this))
     {
     	returnAux = ll_get(this, index);
-    	if(ll_remove(this, index))
-    	{
-    		returnAux = NULL;
-    	}
+    	ll_remove(this, index);
     }
 
     return returnAux;
@@ -424,7 +423,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     	for(int i = 0; i < len; i++)
     	{
     		pElementLista2 = ll_get(this2, i);
-    		if(!ll_contains(this, pElementLista2))
+    		if(ll_contains(this, pElementLista2) == 0)
     		{
     			returnAux = 0;
     			break;
@@ -492,7 +491,7 @@ LinkedList* ll_clone(LinkedList* this)
  */
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
-    int returnAux =-1;
+    int returnAux = - 1;
     void* pElementUno;
     void* pElementDos;
     int longitud;
@@ -500,13 +499,13 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     if(this != NULL && pFunc != NULL && (order == 0 || order == 1))
     {
     	longitud = ll_len(this);
-    	for (int i = 0; i < longitud - 1; i++)
+    	for(int i = 0; i < longitud - 1; i++)
     	{
     		for(int j = i+1; j < longitud; j++)
     		{
     			pElementUno = ll_get(this, i);
     			pElementDos = ll_get(this, j);
-    			if((pFunc(pElementUno, pElementDos) > 0 && order) || (pFunc(pElementUno, pElementDos) < 0 && !order))
+    			if((pFunc(pElementUno, pElementDos) > 0 && order == 1) || (pFunc(pElementUno, pElementDos) < 0 && order == 0))
     			{
     				ll_set(this, i, pElementDos);
     				ll_set(this, j, pElementUno);
