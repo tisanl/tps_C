@@ -331,6 +331,10 @@ int ordenarJugadoresNacionalidad(void* jugador1, void* jugador2)
 		{
 			if(strcmp(nacionalidadJug1, nacionalidadJug2) < 0)
 			{
+				retorno = -1;
+			}
+			else
+			{
 				retorno = 0;
 			}
 		}
@@ -361,6 +365,10 @@ int ordenarJugadoresEdad(void* jugador1, void* jugador2)
 		else
 		{
 			if(edadJug1 < edadJug2)
+			{
+				retorno = -1;
+			}
+			else
 			{
 				retorno = 0;
 			}
@@ -394,6 +402,10 @@ int ordenarJugadoresNombre(void* jugador1, void* jugador2)
 		{
 			if(strcmp(nombreJug1, nombreJug2) < 0)
 			{
+				retorno = -1;
+			}
+			else
+			{
 				retorno = 0;
 			}
 		}
@@ -418,6 +430,8 @@ int ordenarSeleccionesConfederacion(void* seleccion1, void* seleccion2)
 		selec_getConfederacion(auxSeleccion1, confederacionSelec1);
 		selec_getConfederacion(auxSeleccion2, confederacionSelec2);
 
+
+
 		if(strcmp(confederacionSelec1, confederacionSelec2) > 0)
 		{
 			retorno = 1;
@@ -425,6 +439,10 @@ int ordenarSeleccionesConfederacion(void* seleccion1, void* seleccion2)
 		else
 		{
 			if(strcmp(confederacionSelec1, confederacionSelec2) < 0)
+			{
+				retorno = -1;
+			}
+			else
 			{
 				retorno = 0;
 			}
